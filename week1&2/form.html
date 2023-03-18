@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form - Alert Message</title>
+  <!-- <link rel="stylesheet" href="index.css"> -->
+  <style>
+    *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+body{
+  background-color: #806bcd;
+}
+.container{
+  width: 700px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  justify-content: center;
+}
+.box{
+  width: 500px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h3{
+  font-size: 35px;
+  margin: 15px;
+}
+.name{
+  width: 100%;
+  position: relative;
+  margin-bottom: 15px;
+}
+.name i{
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #bbb;
+}
+.name input{
+  width: 100%;
+  padding: 20px 60px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background-color: #eee;
+  border-radius: 40px;
+}
+.name input::placeholder{
+  color: #bbb;
+  font-weight: 500;
+}
+.email{
+  width: 100%;
+  position: relative;
+  margin-bottom: 15px;
+}
+.email i{
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #bbb;
+}
+.email input{
+  width: 100%;
+  padding: 20px 60px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background-color: #eee;
+  border-radius: 40px;
+}
+.email input::placeholder{
+  color: #bbb;
+  font-weight: 500;
+}
+
+.button{
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.button button{
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #806bcd;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  cursor: pointer;
+}
+/* */
+.message .success{
+  font-size: 20px;
+  color: green;
+  position: absolute;
+  animation: buttons .3s linear;
+  display: none;
+}
+.message .danger{
+  font-size: 20px;
+  color: red;
+  position: absolute;
+  transition: .3s;
+  animation: buttons .3s linear;
+  display: none;
+}
+@keyframes buttons{
+  0%{
+      transform: scale(0.1);
+  }
+  50%{
+      transform: scale(0.5);
+  }
+  100%{
+      transform: scale(1);
+  }
+}
+  </style>
+
+  <!-- font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="box">
+      <h3>Register Here</h3>
+      <div class="name">
+        <i class="fas fa-user"></i>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="email">
+        <i class="fas fa-envelope"></i>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="name">
+        <i class="fas fa-user"></i>
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      <div class="name">
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="">Please select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Others</option>
+      </select>
+      </div>
+      <div class="name">
+        <i class="fas fa-user"></i>
+      <label for="password">Password:</label>
+      <input type="password" placeholder="*****" id="pass" name="password" required>
+      </div>
+      <div class="button">
+        <button id="send" onclick="message()">Submit</button>
+      </div>
+      
+        <div class="success" id="success">Your Registration is Successfull!</div>
+        <div class="danger" id="danger">Some Feilds are Empty!</div>
+
+      </div>
+    </div>
+
+
+    <script>
+      function message(){
+          var Name = document.getElementById('name');
+          var Email = document.getElementById('email');
+          var Phone = document.getElementById('phone');
+          var Gender = document.getElementById('gender');
+          var Password = document.getElementById('pass');
+          const success = document.getElementById('success');
+          const danger = document.getElementById('danger');
+      
+          if(Name.value === '' || Email.value === '' || Phone.value === ''){
+              danger.style.display = 'block';
+          }
+          else{
+              setTimeout(() => {
+                  Name.value = '';
+                  Email.value = '';
+                  Phone.value = '';
+                  Gender.value= '';
+                  Password.value= '';
+              }, 500);
+      
+              success.style.display = 'block';
+          }
+      
+      
+          setTimeout(() => {
+              danger.style.display = 'none';
+              success.style.display = 'none';
+          }, 1000);
+      
+      }
+      </script>
+</body>
+
+</html>
